@@ -1,7 +1,7 @@
-﻿using FileGlitcher.Models.Processors;
+﻿using FileGlitcher.Processors;
 using System.Collections.Generic;
 
-namespace FileGlitcher.Models
+namespace FileGlitcher
 {
   /// <summary>
   /// Configuration for the <see cref="Glitcher"/>.

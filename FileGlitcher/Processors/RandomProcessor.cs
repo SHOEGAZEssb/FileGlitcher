@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FileGlitcher.Models.Processors
+namespace FileGlitcher.Processors
 {
   /// <summary>
   /// Processor that randomizes bytes of a file.

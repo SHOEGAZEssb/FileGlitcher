@@ -1,4 +1,4 @@
-﻿namespace FileGlitcher.Models.Processors
+﻿namespace FileGlitcher.Processors
 {
   /// <summary>
   /// Base class for all glitch processors.

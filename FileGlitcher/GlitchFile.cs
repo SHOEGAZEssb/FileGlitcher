@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace FileGlitcher.Models
+namespace FileGlitcher
 {
   /// <summary>
   /// A glitched file.

@@ -1,4 +1,4 @@
-﻿namespace FileGlitcher.Models
+﻿namespace FileGlitcher
 {
   /// <summary>
   /// Class used to glitch files.

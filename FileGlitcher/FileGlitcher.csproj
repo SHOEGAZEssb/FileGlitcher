@@ -47,12 +47,12 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BaseFile.cs" />
-    <Compile Include="Models\Glitcher.cs" />
-    <Compile Include="Models\GlitcherConfiguration.cs" />
-    <Compile Include="Models\GlitchFile.cs" />
-    <Compile Include="Models\Processors\ProcessorBase.cs" />
-    <Compile Include="Models\Processors\RandomProcessor.cs" />
+    <Compile Include="BaseFile.cs" />
+    <Compile Include="Glitcher.cs" />
+    <Compile Include="GlitcherConfiguration.cs" />
+    <Compile Include="GlitchFile.cs" />
+    <Compile Include="Processors\ProcessorBase.cs" />
+    <Compile Include="Processors\RandomProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
