@@ -6,7 +6,7 @@ namespace FileGlitcher.Processors
   /// <summary>
   /// Processor that randomizes bytes of a file.
   /// </summary>
-  class RandomProcessor : ProcessorBase
+  public class RandomProcessor : ProcessorBase
   {
     #region Properties
 
@@ -65,11 +65,7 @@ namespace FileGlitcher.Processors
         possibleByteIndexes.Add(i);
       }
 
-      Random rnd = null;
-      if (string.IsNullOrEmpty(Seed))
-        rnd = new Random(DateTime.Now.Ticks.GetHashCode());
-      else
-        rnd = new Random(Seed.GetHashCode());
+      Random rnd = string.IsNullOrEmpty(Seed) ? new Random(DateTime.Now.Ticks.GetHashCode()) : new Random(Seed.GetHashCode());
 
       for(int i = 0; i < NumBytesToGlitch; i++)
       {

@@ -6,7 +6,7 @@ namespace FileGlitcher
   /// <summary>
   /// Configuration for the <see cref="Glitcher"/>.
   /// </summary>
-  class GlitcherConfiguration
+  public class GlitcherConfiguration
   {
     #region Properties
 

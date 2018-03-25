@@ -3,7 +3,7 @@
   /// <summary>
   /// Base class for all glitch processors.
   /// </summary>
-  abstract class ProcessorBase
+  public abstract class ProcessorBase
   {
     #region Properties
 

@@ -3,7 +3,7 @@
   /// <summary>
   /// Class used to glitch files.
   /// </summary>
-  static class Glitcher
+  public static class Glitcher
   {
     /// <summary>
     /// Glitches a file via the given <paramref name="config"/>.
