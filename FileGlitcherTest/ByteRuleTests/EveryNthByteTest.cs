@@ -1,6 +1,7 @@
 ﻿using FileGlitcher.Processors;
 using FileGlitcher.Processors.ByteRules;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace FileGlitcherTest.ByteRuleTests
@@ -67,6 +68,31 @@ namespace FileGlitcherTest.ByteRuleTests
 
       // then: indexes match
       CollectionAssert.AreEqual(expectedIndexes, actualIndexes);
+    }
+
+    /// <summary>
+    /// Tests if incorrect n throws the correct
+    /// exception.
+    /// </summary>
+    [Test]
+    public void IncorrectNTest()
+    {
+      // when: trying to create a rule with incorrect n
+      // then: ArgumentOutOfRangeException
+      Assert.That(() => new EveryNthByte(new ByteRange(0, 10), 0), Throws.InstanceOf<ArgumentOutOfRangeException>());
+      Assert.That(() => new EveryNthByte(new ByteRange(0, 10), 11), Throws.InstanceOf<ArgumentOutOfRangeException>());
+    }
+
+    /// <summary>
+    /// Tests if incorrect max byte amount
+    /// throws the correct exception.
+    /// </summary>
+    [Test]
+    public void IncorrectMaxBytesTest()
+    {
+      // when: trying to create a rule with incorrect max bytes
+      // then: ArgumentOutOfRangeException
+      Assert.That(() => new EveryNthByte(new ByteRange(0, 10), 0, 2), Throws.InstanceOf<ArgumentOutOfRangeException>());
     }
   }
 }

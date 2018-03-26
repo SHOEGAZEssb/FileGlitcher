@@ -26,9 +26,9 @@ namespace FileGlitcher.Processors.ByteRules
     public EveryNthByte(ByteRange range, uint maxNumBytesToGlitch, uint n)
       : base(range, maxNumBytesToGlitch)
     {
-      if (n == 0)
+      if (n == 0 || n > range.End - range.Start)
         throw new ArgumentOutOfRangeException(nameof(n));
-      if (maxNumBytesToGlitch > (range.End - range.Start))
+      if (maxNumBytesToGlitch == 0)
         throw new ArgumentOutOfRangeException(nameof(maxNumBytesToGlitch));
 
       _n = n;
