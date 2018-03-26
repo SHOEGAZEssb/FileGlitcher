@@ -13,16 +13,9 @@
     public uint NumBytesToGlitch;
 
     /// <summary>
-    /// Byte number of the start of
-    /// the range to possibly glitch.
+    /// Range of bytes to possibly glitch.
     /// </summary>
-    public uint RangeStart;
-
-    /// <summary>
-    /// Byte number of the end of
-    /// the range to possibly glitch.
-    /// </summary>
-    public uint RangeEnd;
+    public ByteRange Range;
 
     #endregion Properties
 
@@ -32,15 +25,11 @@
     /// Constructor.
     /// </summary>
     /// <param name="numBytesToGlitch">Number of bytes to glitch.</param>
-    /// <param name="rangeStart">Byte number of the start of
-    /// the range to possibly glitch.</param>
-    /// <param name="rangeEnd">Byte number of the end of
-    /// the range to possibly glitch.</param>
-    protected ProcessorBase(uint numBytesToGlitch, uint rangeStart, uint rangeEnd)
+    /// <param name="range">Range of bytes to possibly glitch.</param>
+    protected ProcessorBase(uint numBytesToGlitch, ByteRange range)
     {
       NumBytesToGlitch = numBytesToGlitch;
-      RangeStart = rangeStart;
-      RangeEnd = rangeEnd;
+      Range = range;
     }
 
     #endregion Construction

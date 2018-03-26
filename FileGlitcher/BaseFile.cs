@@ -11,6 +11,8 @@ namespace FileGlitcher
 
     /// <summary>
     /// Number of bytes of the header of the file.
+    /// These shouldn't usually be glitched, so
+    /// that the file can still be read.
     /// </summary>
     public uint NumHeaderBytes { get; private set; }
 

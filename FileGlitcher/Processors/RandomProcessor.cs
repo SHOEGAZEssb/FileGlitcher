@@ -33,11 +33,12 @@ namespace FileGlitcher.Processors
     /// Constructor.
     /// </summary>
     /// <param name="numBytesToGlitch">Amount of bytes to glitch.</param>
+    /// <param name="range">Range of bytes to possibly glitch.</param>
     /// <param name="seed">Seed to use for RNG.</param>
     /// <param name="minByte">Minimum byte value.</param>
-    /// <param name="MaxByte">Maximum byte value.</param>
-    public RandomProcessor(uint numBytesToGlitch, uint rangeStart, uint rangeEnd, string seed = null, byte minByte = 0, byte maxByte = 255)
-      : base(numBytesToGlitch, rangeStart, rangeEnd)
+    /// <param name="maxByte">Maximum byte value.</param>
+    public RandomProcessor(uint numBytesToGlitch, ByteRange range, string seed = null, byte minByte = 0, byte maxByte = 255)
+      : base(numBytesToGlitch, range)
     {
       Seed = seed;
       MinByte = minByte;
@@ -60,7 +61,7 @@ namespace FileGlitcher.Processors
     public override byte[] Apply(byte[] bytes)
     {
       List<uint> possibleByteIndexes = new List<uint>();
-      for(uint i = RangeStart; i <= RangeEnd; i++)
+      for(uint i = Range.Start; i <= Range.End; i++)
       {
         possibleByteIndexes.Add(i);
       }
