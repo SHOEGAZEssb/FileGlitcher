@@ -4,7 +4,7 @@ namespace FileGlitcher.Processors.ByteRules
 {
   /// <summary>
   /// Byte rule where random bytes are selected
-  /// for glitching..
+  /// for glitching.
   /// </summary>
   public class RandomBytes : ByteRuleBase
   {
