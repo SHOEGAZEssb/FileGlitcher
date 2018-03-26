@@ -11,21 +11,18 @@ namespace FileGlitcher
     #region Properties
 
     /// <summary>
-    /// The file to glitch.
-    /// </summary>
-    public BaseFile FileToGlitch;
-
-    /// <summary>
     /// The processor chain used to
-    /// glitch the <see cref="FileToGlitch"/>.
+    /// glitch the bytes.
     /// </summary>
     public List<ProcessorBase> ProcessorChain { get; private set; }
 
     #endregion Properties
 
-    public GlitcherConfiguration(BaseFile fileToGlitch)
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    public GlitcherConfiguration()
     {
-      FileToGlitch = fileToGlitch;
       ProcessorChain = new List<ProcessorBase>();
     }
   }
