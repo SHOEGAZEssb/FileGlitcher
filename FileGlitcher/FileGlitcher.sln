@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileGlitcher", "FileGlitcher.csproj", "{77ADC857-CFD9-46CF-8606-7671CEE0C07E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileGlitcherTest", "..\FileGlitcherTest\FileGlitcherTest.csproj", "{FCDA07B2-4F2E-46E4-B87D-7290A4741A0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{77ADC857-CFD9-46CF-8606-7671CEE0C07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77ADC857-CFD9-46CF-8606-7671CEE0C07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77ADC857-CFD9-46CF-8606-7671CEE0C07E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCDA07B2-4F2E-46E4-B87D-7290A4741A0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDA07B2-4F2E-46E4-B87D-7290A4741A0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDA07B2-4F2E-46E4-B87D-7290A4741A0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDA07B2-4F2E-46E4-B87D-7290A4741A0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

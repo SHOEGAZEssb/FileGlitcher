@@ -21,15 +21,15 @@ namespace FileGlitcher.Processors.ByteRules
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    /// <param name="numBytesToGlitch">Number of bytes to glitch.
+    /// <param name="maxNumBytesToGlitch">Maximum number of bytes to glitch.
     /// <paramref name="n"/>Byte skip factor.
-    public EveryNthByte(ByteRange range, uint numBytesToGlitch, uint n) 
-      : base(range, numBytesToGlitch)
+    public EveryNthByte(ByteRange range, uint maxNumBytesToGlitch, uint n)
+      : base(range, maxNumBytesToGlitch)
     {
       if (n == 0)
         throw new ArgumentOutOfRangeException(nameof(n));
-      if (numBytesToGlitch > (range.End - range.Start))
-        throw new ArgumentOutOfRangeException(nameof(numBytesToGlitch));
+      if (maxNumBytesToGlitch > (range.End - range.Start))
+        throw new ArgumentOutOfRangeException(nameof(maxNumBytesToGlitch));
 
       _n = n;
       CreatePossibleByteIndexes();
@@ -49,10 +49,12 @@ namespace FileGlitcher.Processors.ByteRules
     /// </summary>
     protected override void CreatePossibleByteIndexes()
     {
-      for (uint i = 0; i < _numBytesToGlitch; i++)
+      for (uint i = 0; i <= _range.End - _range.Start; i++)
       {
-        if (i % _n == 0)
+        if ((i + 1) % _n == 0)
           PossibleByteIndexes.Add(_range.Start + i);
+        if (PossibleByteIndexes.Count == _numBytesToGlitch)
+          return;
       }
     }
   }
