@@ -1,6 +1,6 @@
 ﻿using FileGlitcher.Processors;
 using FileGlitcher.Processors.ByteProviders;
-using FileGlitcher.Processors.ByteRules;
+using FileGlitcher.Processors.ByteIndexProviders;
 using NUnit.Framework;
 
 namespace FileGlitcherTest.ProcessorTests
@@ -19,7 +19,7 @@ namespace FileGlitcherTest.ProcessorTests
     {
       // given: ReplaceProcessor
       byte[] bytes = new byte[] { 0, 1, 2, 3, 4 };
-      ReplaceProcessor proc = new ReplaceProcessor(new EveryNthByte(new ByteRange(0, (uint)bytes.Length), 1), new FixedByteProvider(5));
+      ReplaceProcessor proc = new ReplaceProcessor(new EveryNthByteIndexProvider(new ByteRange(0, (uint)bytes.Length), 1), new FixedByteProvider(5));
 
       // when: applying the processor
       var actual = proc.Apply(bytes);

@@ -1,5 +1,5 @@
 ﻿using FileGlitcher.Processors;
-using FileGlitcher.Processors.ByteRules;
+using FileGlitcher.Processors.ByteIndexProviders;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -7,13 +7,13 @@ using System.Collections.Generic;
 namespace FileGlitcherTest.ByteRuleTests
 {
   /// <summary>
-  /// Tests for the <see cref="EveryNthByte"/> rule.
+  /// Tests for the <see cref="EveryNthByteIndexProvider"/> rule.
   /// </summary>
   [TestFixture]
   class EveryNthByteTest
   {
     /// <summary>
-    /// Tests the <see cref="EveryNthByte"/> rule
+    /// Tests the <see cref="EveryNthByteIndexProvider"/> rule
     /// with a given max byte number.
     /// </summary>
     [Test]
@@ -21,7 +21,7 @@ namespace FileGlitcherTest.ByteRuleTests
     {
       // given: range and byte rule with max 4 bytes
       ByteRange range = new ByteRange(0, 10);
-      EveryNthByte rule = new EveryNthByte(range, 4, 2);
+      EveryNthByteIndexProvider rule = new EveryNthByteIndexProvider(range, 4, 2);
 
       List<uint> expectedIndexes = new List<uint>()
       {
@@ -41,7 +41,7 @@ namespace FileGlitcherTest.ByteRuleTests
     }
 
     /// <summary>
-    /// Tests the <see cref="EveryNthByte"/> rule
+    /// Tests the <see cref="EveryNthByteIndexProvider"/> rule
     /// without a given max byte number.
     /// </summary>
     [Test]
@@ -49,7 +49,7 @@ namespace FileGlitcherTest.ByteRuleTests
     {
       // given: range and byte rule
       ByteRange range = new ByteRange(0, 11);
-      EveryNthByte rule = new EveryNthByte(range, 2);
+      EveryNthByteIndexProvider rule = new EveryNthByteIndexProvider(range, 2);
 
       List<uint> expectedIndexes = new List<uint>()
       {
@@ -79,8 +79,8 @@ namespace FileGlitcherTest.ByteRuleTests
     {
       // when: trying to create a rule with incorrect n
       // then: ArgumentOutOfRangeException
-      Assert.That(() => new EveryNthByte(new ByteRange(0, 10), 0), Throws.InstanceOf<ArgumentOutOfRangeException>());
-      Assert.That(() => new EveryNthByte(new ByteRange(0, 10), 11), Throws.InstanceOf<ArgumentOutOfRangeException>());
+      Assert.That(() => new EveryNthByteIndexProvider(new ByteRange(0, 10), 0), Throws.InstanceOf<ArgumentOutOfRangeException>());
+      Assert.That(() => new EveryNthByteIndexProvider(new ByteRange(0, 10), 11), Throws.InstanceOf<ArgumentOutOfRangeException>());
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ namespace FileGlitcherTest.ByteRuleTests
     {
       // when: trying to create a rule with incorrect max bytes
       // then: ArgumentOutOfRangeException
-      Assert.That(() => new EveryNthByte(new ByteRange(0, 10), 0, 2), Throws.InstanceOf<ArgumentOutOfRangeException>());
+      Assert.That(() => new EveryNthByteIndexProvider(new ByteRange(0, 10), 0, 2), Throws.InstanceOf<ArgumentOutOfRangeException>());
     }
   }
 }

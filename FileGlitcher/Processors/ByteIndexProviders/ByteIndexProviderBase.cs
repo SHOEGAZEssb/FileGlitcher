@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FileGlitcher.Processors.ByteRules
+namespace FileGlitcher.Processors.ByteIndexProviders
 {
   /// <summary>
   /// Base class for all byte rules.
   /// A byte rules defines which bytes
   /// are selected for glitching.
   /// </summary>
-  public abstract class ByteRuleBase
+  public abstract class ByteIndexProviderBase
   {
     #region Properties
 
@@ -46,7 +46,7 @@ namespace FileGlitcher.Processors.ByteRules
     /// </summary>
     /// <param name="range">The byte range to get possible indexes from.</param>
     /// <param name="numBytesToGlitch">Amount of bytes to glitch.</param>
-    public ByteRuleBase(ByteRange range, uint numBytesToGlitch)
+    public ByteIndexProviderBase(ByteRange range, uint numBytesToGlitch)
     {
       _range = range;
 

@@ -1,18 +1,18 @@
 ﻿using System;
 
-namespace FileGlitcher.Processors.ByteRules
+namespace FileGlitcher.Processors.ByteIndexProviders
 {
   /// <summary>
   /// Byte rule where random bytes are selected
   /// for glitching.
   /// </summary>
-  public class RandomBytes : ByteRuleBase
+  public class RandomByteIndexProvider : ByteIndexProviderBase
   {
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    public RandomBytes(ByteRange range)
+    public RandomByteIndexProvider(ByteRange range)
       : this(range, range.End - range.Start)
     { }
 
@@ -21,7 +21,7 @@ namespace FileGlitcher.Processors.ByteRules
     /// </summary>
     /// <param name="range">Range to glitch.</param>
     /// <param name="numBytesToGlitch">Amount of bytes to glitch in the range.</param>
-    public RandomBytes(ByteRange range, uint numBytesToGlitch)
+    public RandomByteIndexProvider(ByteRange range, uint numBytesToGlitch)
       : base(range, numBytesToGlitch)
     {
       CreatePossibleByteIndexes();

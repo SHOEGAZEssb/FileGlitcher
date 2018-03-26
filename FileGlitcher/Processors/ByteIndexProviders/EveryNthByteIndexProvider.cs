@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace FileGlitcher.Processors.ByteRules
+namespace FileGlitcher.Processors.ByteIndexProviders
 {
   /// <summary>
   /// Byte rule where every nth byte is selected
   /// for glitching.
   /// </summary>
-  public class EveryNthByte : ByteRuleBase
+  public class EveryNthByteIndexProvider : ByteIndexProviderBase
   {
     #region Member
 
@@ -23,7 +23,7 @@ namespace FileGlitcher.Processors.ByteRules
     /// <param name="range">Range to glitch.</param>
     /// <param name="maxNumBytesToGlitch">Maximum number of bytes to glitch.
     /// <paramref name="n"/>Byte skip factor.
-    public EveryNthByte(ByteRange range, uint maxNumBytesToGlitch, uint n)
+    public EveryNthByteIndexProvider(ByteRange range, uint maxNumBytesToGlitch, uint n)
       : base(range, maxNumBytesToGlitch)
     {
       if (n == 0 || n > range.End - range.Start)
@@ -40,7 +40,7 @@ namespace FileGlitcher.Processors.ByteRules
     /// </summary>
     /// <param name="range">Range to glitch.</param>
     /// <param name="n">Byte skip factor.</param>
-    public EveryNthByte(ByteRange range, uint n)
+    public EveryNthByteIndexProvider(ByteRange range, uint n)
       : this(range, range.End - range.Start, n)
     { }
 

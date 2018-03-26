@@ -1,19 +1,19 @@
 ﻿using FileGlitcher.Processors.ByteProviders;
-using FileGlitcher.Processors.ByteRules;
+using FileGlitcher.Processors.ByteIndexProviders;
 
 namespace FileGlitcher.Processors
 {
   /// <summary>
   /// Processor that replaces bytes.
   /// </summary>
-  public class ReplaceProcessor : ProcessorBase
+  public class ReplaceProcessor : ByteProvidedProcessorBase
   {
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="byteRule">Byte rule to apply.</param>
     /// <param name="byteProvider">Provider of bytes.</param>
-    public ReplaceProcessor(ByteRuleBase byteRule, IByteProvider byteProvider)
+    public ReplaceProcessor(ByteIndexProviderBase byteRule, IByteProvider byteProvider)
       : base(byteRule, byteProvider)
     { }
 

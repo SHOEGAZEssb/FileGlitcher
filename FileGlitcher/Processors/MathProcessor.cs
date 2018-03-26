@@ -1,6 +1,6 @@
 ﻿using System;
 using FileGlitcher.Processors.ByteProviders;
-using FileGlitcher.Processors.ByteRules;
+using FileGlitcher.Processors.ByteIndexProviders;
 
 namespace FileGlitcher.Processors
 {
@@ -24,7 +24,7 @@ namespace FileGlitcher.Processors
   /// Processor that performs mathematical
   /// operations on the bytes to glitch.
   /// </summary>
-  public class MathProcessor : ProcessorBase
+  public class MathProcessor : ByteProvidedProcessorBase
   {
     #region Properties
 
@@ -47,7 +47,7 @@ namespace FileGlitcher.Processors
     /// <param name="byteProvider">Provider of bytes.</param>
     /// <param name="operation">Mathematical operation to perform.</param>
     /// <param name="wrapAround">If true, wraps the calculated byte if needed.</param>
-    public MathProcessor(ByteRuleBase byteRule, IByteProvider byteProvider, Operation operation, bool wrapAround)
+    public MathProcessor(ByteIndexProviderBase byteRule, IByteProvider byteProvider, Operation operation, bool wrapAround)
       : base(byteRule, byteProvider)
     {
       OperationToPerform = operation;

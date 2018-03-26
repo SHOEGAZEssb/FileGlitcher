@@ -52,13 +52,14 @@
     <Compile Include="Glitcher.cs" />
     <Compile Include="GlitcherConfiguration.cs" />
     <Compile Include="GlitchFile.cs" />
+    <Compile Include="Processors\ByteProvidedProcessorBase.cs" />
     <Compile Include="Processors\ByteProviders\FixedByteProvider.cs" />
     <Compile Include="Processors\ByteProviders\IByteProvider.cs" />
     <Compile Include="Processors\ByteProviders\RandomByteProvider.cs" />
     <Compile Include="Processors\ByteRange.cs" />
-    <Compile Include="Processors\ByteRules\ByteRuleBase.cs" />
-    <Compile Include="Processors\ByteRules\EveryNthByte.cs" />
-    <Compile Include="Processors\ByteRules\RandomBytes.cs" />
+    <Compile Include="Processors\ByteIndexProviders\ByteIndexProviderBase.cs" />
+    <Compile Include="Processors\ByteIndexProviders\EveryNthByteIndexProvider.cs" />
+    <Compile Include="Processors\ByteIndexProviders\RandomByteIndexProvider.cs" />
     <Compile Include="Processors\MathProcessor.cs" />
     <Compile Include="Processors\ProcessorBase.cs" />
     <Compile Include="Processors\ReplaceProcessor.cs" />
