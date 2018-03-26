@@ -33,7 +33,7 @@ namespace FileGlitcherTest.ByteRuleTests
 
       // when: getting the bytes
       List<uint> actualIndexes = new List<uint>();
-      while (rule.NumBytesLeftToGlitch != 0)
+      while (rule.ByteIndexPool.Count != 0)
         actualIndexes.Add(rule.GetNextByteIndex());
 
       // then: indexes match
@@ -63,7 +63,7 @@ namespace FileGlitcherTest.ByteRuleTests
 
       // when: getting the bytes
       List<uint> actualIndexes = new List<uint>();
-      while (rule.NumBytesLeftToGlitch != 0)
+      while (rule.ByteIndexPool.Count != 0)
         actualIndexes.Add(rule.GetNextByteIndex());
 
       // then: indexes match

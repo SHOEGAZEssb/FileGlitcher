@@ -52,8 +52,8 @@ namespace FileGlitcher.Processors.ByteIndexProviders
       for (uint i = 0; i <= _range.End - _range.Start; i++)
       {
         if ((i + 1) % _n == 0)
-          PossibleByteIndexes.Add(_range.Start + i);
-        if (PossibleByteIndexes.Count == _numBytesToGlitch)
+          _possibleByteIndexes.Add(_range.Start + i);
+        if (_possibleByteIndexes.Count == _numBytesToGlitch)
           return;
       }
     }

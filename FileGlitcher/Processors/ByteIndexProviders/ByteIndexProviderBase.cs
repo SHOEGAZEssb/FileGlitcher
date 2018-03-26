@@ -14,9 +14,11 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     #region Properties
 
     /// <summary>
-    /// Amount of bytes left to glitch.
+    /// The pool of byte indexes.
+    /// Each <see cref="GetNextByteIndex"/> removes
+    /// the index from the pool.
     /// </summary>
-    public uint NumBytesLeftToGlitch => (uint)PossibleByteIndexes.Count;
+    public IReadOnlyList<uint> ByteIndexPool => _possibleByteIndexes.AsReadOnly();
 
     #endregion Properties
 
@@ -35,7 +37,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// <summary>
     /// List of possible byte indexes;
     /// </summary>
-    protected List<uint> PossibleByteIndexes { get; set; }
+    protected List<uint> _possibleByteIndexes { get; set; }
 
     #endregion Member
 
@@ -54,7 +56,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
         throw new ArgumentOutOfRangeException(nameof(numBytesToGlitch));
 
       _numBytesToGlitch = numBytesToGlitch;
-      PossibleByteIndexes = new List<uint>();
+      _possibleByteIndexes = new List<uint>();
     }
 
     #endregion Construction
@@ -70,8 +72,8 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// <returns>Index of the next byte to glitch.</returns>
     public uint GetNextByteIndex()
     {
-      uint index = PossibleByteIndexes.First();
-      PossibleByteIndexes.RemoveAt(0);
+      uint index = _possibleByteIndexes.First();
+      _possibleByteIndexes.RemoveAt(0);
       return index;
     }
   }

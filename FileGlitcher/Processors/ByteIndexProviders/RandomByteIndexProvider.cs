@@ -35,7 +35,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
       Random rnd = new Random(DateTime.Now.Ticks.GetHashCode());
       for(int i = 0; i < _numBytesToGlitch; i++)
       {
-        PossibleByteIndexes.Add((uint)rnd.Next((int)_range.Start, (int)_range.End));
+        _possibleByteIndexes.Add((uint)rnd.Next((int)_range.Start, (int)_range.End));
       }
     }
   }

@@ -27,9 +27,9 @@ namespace FileGlitcher.Processors
     {
       // todo: initialize byterule
 
-      while(_byteRule.NumBytesLeftToGlitch != 0)
+      while(_byteIndexProvider.ByteIndexPool.Count != 0)
       {
-        bytes[_byteRule.GetNextByteIndex()] = ByteProvider.GetByte();
+        bytes[_byteIndexProvider.GetNextByteIndex()] = ByteProvider.GetByte();
       }
 
       return bytes;

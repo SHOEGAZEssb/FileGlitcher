@@ -64,9 +64,9 @@ namespace FileGlitcher.Processors
     {
       // todo: initialize byte rule
 
-      while(_byteRule.NumBytesLeftToGlitch != 0)
+      while(_byteIndexProvider.ByteIndexPool.Count != 0)
       {
-        uint byteIndex = _byteRule.GetNextByteIndex();
+        uint byteIndex = _byteIndexProvider.GetNextByteIndex();
         byte original = bytes[byteIndex];
         byte value = ByteProvider.GetByte();
 

@@ -14,7 +14,7 @@ namespace FileGlitcher.Processors
     /// <summary>
     /// Byte rule to apply.
     /// </summary>
-    protected ByteIndexProviderBase _byteRule;
+    protected ByteIndexProviderBase _byteIndexProvider;
 
     #endregion Member
 
@@ -23,10 +23,10 @@ namespace FileGlitcher.Processors
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="byteRule">Byte rule to apply.</param>
-    protected ProcessorBase(ByteIndexProviderBase byteRule)
+    /// <param name="byteIndexProvider">Byte rule to apply.</param>
+    protected ProcessorBase(ByteIndexProviderBase byteIndexProvider)
     {
-      _byteRule = byteRule;
+      _byteIndexProvider = byteIndexProvider;
     }
 
     #endregion Construction
