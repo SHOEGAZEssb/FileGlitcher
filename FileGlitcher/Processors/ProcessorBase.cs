@@ -1,4 +1,6 @@
-﻿using FileGlitcher.Processors.ByteRules;
+﻿using FileGlitcher.Processors.ByteProviders;
+using FileGlitcher.Processors.ByteRules;
+using System;
 
 namespace FileGlitcher.Processors
 {
@@ -7,6 +9,15 @@ namespace FileGlitcher.Processors
   /// </summary>
   public abstract class ProcessorBase
   {
+    #region Properties
+
+    /// <summary>
+    /// Object providing bytes.
+    /// </summary>
+    public IByteProvider ByteProvider;
+
+    #endregion Properties
+
     #region Member
 
     /// <summary>
@@ -22,9 +33,11 @@ namespace FileGlitcher.Processors
     /// Constructor.
     /// </summary>
     /// <param name="byteRule">Byte rule to apply.</param>
-    protected ProcessorBase(ByteRuleBase byteRule)
+    /// <param name="byteProvider">Provider of bytes.</param>
+    protected ProcessorBase(ByteRuleBase byteRule, IByteProvider byteProvider)
     {
       _byteRule = byteRule;
+      ByteProvider = byteProvider ?? throw new ArgumentNullException(nameof(byteProvider));
     }
 
     #endregion Construction

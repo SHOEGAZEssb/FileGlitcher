@@ -39,6 +39,8 @@ namespace FileGlitcher.Processors.ByteRules
 
     #endregion Member
 
+    #region Construction
+
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -54,6 +56,8 @@ namespace FileGlitcher.Processors.ByteRules
       _numBytesToGlitch = numBytesToGlitch;
       PossibleByteIndexes = new List<uint>();
     }
+
+    #endregion Construction
 
     /// <summary>
     /// Creates the possible byte indexes to use.
