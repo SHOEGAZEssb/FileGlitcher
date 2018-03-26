@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ByteRuleTests\EveryNthByteTest.cs" />
     <Compile Include="ProcessorTests\MathProcessorTest.cs" />
+    <Compile Include="ProcessorTests\ReplaceProcessorTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
