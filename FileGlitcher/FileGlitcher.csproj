@@ -53,6 +53,9 @@
     <Compile Include="GlitcherConfiguration.cs" />
     <Compile Include="GlitchFile.cs" />
     <Compile Include="Processors\ByteRange.cs" />
+    <Compile Include="Processors\ByteRules\ByteRuleBase.cs" />
+    <Compile Include="Processors\ByteRules\EveryNthByte.cs" />
+    <Compile Include="Processors\ByteRules\RandomBytes.cs" />
     <Compile Include="Processors\ProcessorBase.cs" />
     <Compile Include="Processors\RandomProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -77,8 +80,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Processors\ByteRules\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

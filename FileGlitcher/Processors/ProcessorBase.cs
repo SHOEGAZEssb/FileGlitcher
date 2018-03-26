@@ -1,35 +1,30 @@
-﻿namespace FileGlitcher.Processors
+﻿using FileGlitcher.Processors.ByteRules;
+
+namespace FileGlitcher.Processors
 {
   /// <summary>
   /// Base class for all glitch processors.
   /// </summary>
   public abstract class ProcessorBase
   {
-    #region Properties
+    #region Member
 
     /// <summary>
-    /// Number of bytes to glitch.
+    /// Byte rule to apply.
     /// </summary>
-    public uint NumBytesToGlitch;
+    protected ByteRuleBase _byteRule;
 
-    /// <summary>
-    /// Range of bytes to possibly glitch.
-    /// </summary>
-    public ByteRange Range;
-
-    #endregion Properties
+    #endregion Member
 
     #region Construction
 
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="numBytesToGlitch">Number of bytes to glitch.</param>
-    /// <param name="range">Range of bytes to possibly glitch.</param>
-    protected ProcessorBase(uint numBytesToGlitch, ByteRange range)
+    /// <param name="byteRule">Byte rule to apply.</param>
+    protected ProcessorBase(ByteRuleBase byteRule)
     {
-      NumBytesToGlitch = numBytesToGlitch;
-      Range = range;
+      _byteRule = byteRule;
     }
 
     #endregion Construction

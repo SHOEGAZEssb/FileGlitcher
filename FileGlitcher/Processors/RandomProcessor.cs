@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FileGlitcher.Processors.ByteRules;
+using System;
 
 namespace FileGlitcher.Processors
 {
@@ -37,8 +37,8 @@ namespace FileGlitcher.Processors
     /// <param name="seed">Seed to use for RNG.</param>
     /// <param name="minByte">Minimum byte value.</param>
     /// <param name="maxByte">Maximum byte value.</param>
-    public RandomProcessor(uint numBytesToGlitch, ByteRange range, string seed = null, byte minByte = 0, byte maxByte = 255)
-      : base(numBytesToGlitch, range)
+    public RandomProcessor(ByteRuleBase rule, string seed = null, byte minByte = 0, byte maxByte = 255)
+      : base(rule)
     {
       Seed = seed;
       MinByte = minByte;
@@ -60,19 +60,14 @@ namespace FileGlitcher.Processors
     /// <returns>Glitched bytes.</returns>
     public override byte[] Apply(byte[] bytes)
     {
-      List<uint> possibleByteIndexes = new List<uint>();
-      for(uint i = Range.Start; i <= Range.End; i++)
-      {
-        possibleByteIndexes.Add(i);
-      }
+      // todo: create rule index pool
 
       Random rnd = string.IsNullOrEmpty(Seed) ? new Random(DateTime.Now.Ticks.GetHashCode()) : new Random(Seed.GetHashCode());
 
-      for(int i = 0; i < NumBytesToGlitch; i++)
+      while(_byteRule.NumBytesLeftToGlitch != 0)
       {
-        uint byteIndex = (uint)rnd.Next(0, possibleByteIndexes.Count);
+        uint byteIndex = _byteRule.GetNextByteIndex();
         bytes[byteIndex] = (byte)rnd.Next(MinByte, MaxByte);
-        possibleByteIndexes.Remove(byteIndex);
       }
 
       return bytes;
