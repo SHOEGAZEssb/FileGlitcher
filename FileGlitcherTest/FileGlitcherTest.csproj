@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteIndexProvidersTests\EveryNthByteTest.cs" />
+    <Compile Include="ByteProvidersTests\FixedByteProviderTest.cs" />
     <Compile Include="ProcessorTests\BitShiftProcessorTest.cs" />
     <Compile Include="ProcessorTests\MathProcessorTest.cs" />
     <Compile Include="ProcessorTests\ReplaceProcessorTest.cs" />
