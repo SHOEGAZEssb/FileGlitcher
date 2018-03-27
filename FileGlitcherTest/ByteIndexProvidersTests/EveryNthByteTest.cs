@@ -4,13 +4,13 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace FileGlitcherTest.ByteRuleTests
+namespace FileGlitcherTest.ByteIndexProvidersTest
 {
   /// <summary>
   /// Tests for the <see cref="EveryNthByteIndexProvider"/> rule.
   /// </summary>
   [TestFixture]
-  class EveryNthByteTest
+  class EveryNthByteIndexProviderTest
   {
     /// <summary>
     /// Tests the <see cref="EveryNthByteIndexProvider"/> rule

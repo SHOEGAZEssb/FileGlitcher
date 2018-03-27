@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ByteRuleTests\EveryNthByteTest.cs" />
+    <Compile Include="ByteIndexProvidersTests\EveryNthByteTest.cs" />
     <Compile Include="ProcessorTests\BitShiftProcessorTest.cs" />
     <Compile Include="ProcessorTests\MathProcessorTest.cs" />
     <Compile Include="ProcessorTests\ReplaceProcessorTest.cs" />
