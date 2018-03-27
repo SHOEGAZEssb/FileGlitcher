@@ -22,7 +22,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// </summary>
     /// <param name="range">Range to glitch.</param>
     /// <param name="maxNumBytesToGlitch">Maximum number of bytes to glitch.
-    /// <paramref name="n"/>Byte skip factor.
+    /// <param name="n"/>Byte skip factor.
     public EveryNthByteIndexProvider(ByteRange range, uint maxNumBytesToGlitch, uint n)
       : base(range, maxNumBytesToGlitch)
     {
