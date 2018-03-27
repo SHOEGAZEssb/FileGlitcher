@@ -19,8 +19,13 @@ namespace FileGlitcher.Processors
 
     #endregion Properties
 
-    public ByteProvidedProcessorBase(ByteIndexProviderBase byteRule, IByteProvider byteProvider)
-      : base(byteRule)
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="byteIndexProvider">Provider of byte indexes..</param>
+    /// <param name="byteProvider">Provider of bytes to use.</param>
+    public ByteProvidedProcessorBase(ByteIndexProviderBase byteIndexProvider, IByteProvider byteProvider)
+      : base(byteIndexProvider)
     {
       ByteProvider = byteProvider ?? throw new ArgumentNullException(nameof(byteProvider));
     }

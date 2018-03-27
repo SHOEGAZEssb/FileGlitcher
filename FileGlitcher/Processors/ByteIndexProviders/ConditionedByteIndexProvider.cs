@@ -26,11 +26,11 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    /// <param name="maxNumBytesToGlitch">Maximum number of bytes to glitch.
+    /// <param name="maxNumBytesToGlitch">Maximum number of bytes to glitch.</param>
     /// <param name="bytes">The bytes to check with the <paramref name="conditionPredicate"/>.</param>
     /// <param name="conditionPredicate">The condition to check each byte for.</param>
-    public ConditionedByteIndexProvider(ByteRange range, uint numBytesToGlitch, byte[] bytes, Func<byte, bool> conditionPredicate)
-      : base(range, numBytesToGlitch)
+    public ConditionedByteIndexProvider(ByteRange range, uint maxNumBytesToGlitch, byte[] bytes, Func<byte, bool> conditionPredicate)
+      : base(range, maxNumBytesToGlitch)
     {
       if (bytes == null)
         throw new ArgumentNullException(nameof(bytes));
