@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="ByteIndexProvidersTests\ConditionedByteIndexProviderTest.cs" />
     <Compile Include="ByteIndexProvidersTests\EveryNthByteTest.cs" />
+    <Compile Include="ByteProvidersTests\ByteProviderTest.cs" />
     <Compile Include="ByteProvidersTests\FixedByteProviderTest.cs" />
     <Compile Include="GlitcherTests.cs" />
     <Compile Include="ProcessorTests\BitShiftProcessorTest.cs" />

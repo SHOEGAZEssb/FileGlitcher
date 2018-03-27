@@ -57,6 +57,7 @@
     <Compile Include="Processors\BitShiftProcessor.cs" />
     <Compile Include="Processors\ByteIndexProviders\ConditionedByteIndexProvider.cs" />
     <Compile Include="Processors\ByteProvidedProcessorBase.cs" />
+    <Compile Include="Processors\ByteProviders\ByteProvider.cs" />
     <Compile Include="Processors\ByteProviders\FixedByteProvider.cs" />
     <Compile Include="Processors\ByteProviders\IByteProvider.cs" />
     <Compile Include="Processors\ByteProviders\RandomByteProvider.cs" />
