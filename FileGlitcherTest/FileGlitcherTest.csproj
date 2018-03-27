@@ -9,11 +9,12 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>FileGlitcherTest</RootNamespace>
     <AssemblyName>FileGlitcherTest</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteRuleTests\EveryNthByteTest.cs" />
+    <Compile Include="ProcessorTests\BitShiftProcessorTest.cs" />
     <Compile Include="ProcessorTests\MathProcessorTest.cs" />
     <Compile Include="ProcessorTests\ReplaceProcessorTest.cs" />
     <Compile Include="Program.cs" />

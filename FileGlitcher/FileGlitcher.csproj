@@ -52,6 +52,7 @@
     <Compile Include="Glitcher.cs" />
     <Compile Include="GlitcherConfiguration.cs" />
     <Compile Include="GlitchFile.cs" />
+    <Compile Include="Processors\BitShiftProcessor.cs" />
     <Compile Include="Processors\ByteProvidedProcessorBase.cs" />
     <Compile Include="Processors\ByteProviders\FixedByteProvider.cs" />
     <Compile Include="Processors\ByteProviders\IByteProvider.cs" />
