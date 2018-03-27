@@ -1,4 +1,6 @@
-﻿namespace FileGlitcher
+﻿using System;
+
+namespace FileGlitcher
 {
   /// <summary>
   /// Class used to glitch files.
@@ -14,6 +16,14 @@
     /// <returns>Glitched bytes.</returns>
     public static byte[] GlitchBytes(byte[] bytesToGlitch, GlitcherConfiguration config)
     {
+      if (bytesToGlitch == null)
+        throw new ArgumentNullException(nameof(bytesToGlitch));
+      if (bytesToGlitch.Length == 0)
+        throw new ArgumentException(string.Format("{0} can't be empty", nameof(bytesToGlitch)));
+
+      if (config == null)
+        throw new ArgumentNullException(nameof(config));
+
       byte[] bytes = (byte[])bytesToGlitch.Clone();
       foreach(var processor in config.ProcessorChain)
       {
