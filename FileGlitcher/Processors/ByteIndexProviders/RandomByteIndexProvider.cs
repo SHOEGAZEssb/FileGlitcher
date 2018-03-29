@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FileGlitcher.Processors.ByteIndexProviders
+﻿namespace FileGlitcher.Processors.ByteIndexProviders
 {
   /// <summary>
   /// Byte rule where random bytes are selected
@@ -8,12 +6,21 @@ namespace FileGlitcher.Processors.ByteIndexProviders
   /// </summary>
   public class RandomByteIndexProvider : ByteIndexProviderBase
   {
+    #region Properties
+
+    /// <summary>
+    /// Generator for random numbers.
+    /// </summary>
+    public IRandomNumberGenerator RandomNumberGenerator;
+
+    #endregion Properties
+
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
     public RandomByteIndexProvider(ByteRange range)
-      : this(range, range.End - range.Start)
+      : this(range, range.End - range.Start, new RandomNumberGenerator())
     { }
 
     /// <summary>
@@ -21,9 +28,11 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// </summary>
     /// <param name="range">Range to glitch.</param>
     /// <param name="numBytesToGlitch">Amount of bytes to glitch in the range.</param>
-    public RandomByteIndexProvider(ByteRange range, uint numBytesToGlitch)
+    /// <param name="randomNumberGenerator">Generator for random numbers.</param>
+    public RandomByteIndexProvider(ByteRange range, uint numBytesToGlitch, IRandomNumberGenerator randomNumberGenerator)
       : base(range, numBytesToGlitch)
     {
+      RandomNumberGenerator = randomNumberGenerator;
       CreatePossibleByteIndexes();
     }
 
@@ -32,10 +41,9 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// </summary>
     protected override void CreatePossibleByteIndexes()
     {
-      Random rnd = new Random(DateTime.Now.Ticks.GetHashCode());
       for(int i = 0; i < _numBytesToGlitch; i++)
       {
-        _possibleByteIndexes.Add((uint)rnd.Next((int)_range.Start, (int)_range.End));
+        _possibleByteIndexes.Add((uint)RandomNumberGenerator.GetRandomNumber((int)_range.Start, (int)_range.End));
       }
     }
   }
