@@ -1,11 +1,7 @@
 ﻿using FileGlitcher.Processors;
 using FileGlitcher.Processors.ByteIndexProviders;
 using NUnit.Framework;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileGlitcherTest.ByteIndexProvidersTests
 {

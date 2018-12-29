@@ -5,7 +5,7 @@ namespace FileGlitcher
   /// <summary>
   /// Returns random numbers.
   /// </summary>
-  class RandomNumberGenerator : IRandomNumberGenerator
+  public class RandomNumberGenerator : IRandomNumberGenerator
   {
     #region Properties
 

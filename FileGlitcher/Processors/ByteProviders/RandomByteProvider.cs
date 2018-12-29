@@ -56,9 +56,19 @@ namespace FileGlitcher.Processors.ByteProviders
     /// <param name="maxByte">Maximum byte value to generate.</param>
     public RandomByteProvider(IRandomNumberGenerator randomNumberGenerator, byte minByte, byte maxByte)
     {
+      RandomNumberGenerator = randomNumberGenerator ?? throw new ArgumentNullException(nameof(randomNumberGenerator));
       MinByte = minByte;
       MaxByte = maxByte;
     }
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="minByte">Minimum byte value to generate.</param>
+    /// <param name="maxByte">Maximum byte value to generate.</param>
+    public RandomByteProvider(byte minByte, byte maxByte)
+      : this(new RandomNumberGenerator(), minByte, maxByte)
+    { }
 
     #endregion Construction
 

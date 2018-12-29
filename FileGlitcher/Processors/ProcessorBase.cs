@@ -1,6 +1,4 @@
-﻿using FileGlitcher.Processors.ByteProviders;
-using FileGlitcher.Processors.ByteIndexProviders;
-using System;
+﻿using FileGlitcher.Processors.ByteIndexProviders;
 
 namespace FileGlitcher.Processors
 {

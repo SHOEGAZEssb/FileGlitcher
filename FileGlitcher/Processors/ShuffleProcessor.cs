@@ -31,6 +31,15 @@ namespace FileGlitcher.Processors
     }
 
     /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="byteIndexProvider">Provider of the indexes of
+    /// the bytes to glitch.</param>
+    public ShuffleProcessor(ByteIndexProviderBase byteIndexProvider)
+      : this(byteIndexProvider, new RandomNumberGenerator())
+    { }
+
+    /// <summary>
     /// Applies this processor to the
     /// given <paramref name="bytes"/>.
     /// </summary>
