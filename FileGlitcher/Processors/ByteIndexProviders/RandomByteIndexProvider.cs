@@ -19,17 +19,18 @@
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    public RandomByteIndexProvider(ByteRange range)
-      : this(range, range.End - range.Start, new RandomNumberGenerator())
+    /// <param name="randomNumberGenerator">Generator for random numbers.</param>
+    public RandomByteIndexProvider(ByteRange range, IRandomNumberGenerator randomNumberGenerator)
+      : this(range, randomNumberGenerator, range.End - range.Start)
     { }
 
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    /// <param name="numBytesToGlitch">Amount of bytes to glitch in the range.</param>
     /// <param name="randomNumberGenerator">Generator for random numbers.</param>
-    public RandomByteIndexProvider(ByteRange range, uint numBytesToGlitch, IRandomNumberGenerator randomNumberGenerator)
+    /// <param name="numBytesToGlitch">Amount of bytes to glitch in the range.</param>
+    public RandomByteIndexProvider(ByteRange range, IRandomNumberGenerator randomNumberGenerator, uint numBytesToGlitch)
       : base(range, numBytesToGlitch)
     {
       RandomNumberGenerator = randomNumberGenerator;

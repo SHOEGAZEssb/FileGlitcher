@@ -51,13 +51,6 @@ namespace FileGlitcher.Processors.ByteProviders
     /// <summary>
     /// Constructor.
     /// </summary>
-    public RandomByteProvider()
-      : this(new RandomNumberGenerator(), 0, 255)
-    { }
-
-    /// <summary>
-    /// Constructor.
-    /// </summary>
     /// <param name="randomNumberGenerator">Generator for random numbers.</param>
     /// <param name="minByte">Minimum byte value to generate.</param>
     /// <param name="maxByte">Maximum byte value to generate.</param>

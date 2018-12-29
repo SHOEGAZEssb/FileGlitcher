@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FileGlitcher.Processors.ByteIndexProviders;
 
 namespace FileGlitcher.Processors
@@ -15,9 +12,9 @@ namespace FileGlitcher.Processors
     #region Properties
 
     /// <summary>
-    /// Seed to use for random number generation.
+    /// Generator for random numbers.
     /// </summary>
-    public int Seed;
+    public IRandomNumberGenerator RandomNumberGenerator;
 
     #endregion Properties
 
@@ -26,20 +23,11 @@ namespace FileGlitcher.Processors
     /// </summary>
     /// <param name="byteIndexProvider">Provider of the indexes of
     /// the bytes to glitch.</param>
-    public ShuffleProcessor(ByteIndexProviderBase byteIndexProvider)
-      : this(byteIndexProvider, DateTime.Now.Ticks.GetHashCode())
-    { }
-
-    /// <summary>
-    /// Constructor.
-    /// </summary>
-    /// <param name="byteIndexProvider">Provider of the indexes of
-    /// the bytes to glitch.</param>
-    /// <param name="seed">Seed to use for random number generation.</param>
-    public ShuffleProcessor(ByteIndexProviderBase byteIndexProvider, int seed)
+    /// <param name="randomNumberGenerator">Generator for random numbers.</param>
+    public ShuffleProcessor(ByteIndexProviderBase byteIndexProvider, IRandomNumberGenerator randomNumberGenerator)
       : base(byteIndexProvider)
     {
-      Seed = seed;
+      RandomNumberGenerator = randomNumberGenerator;
     }
 
     /// <summary>
@@ -52,8 +40,6 @@ namespace FileGlitcher.Processors
     {
       // todo: initialize byteIndexProvider
 
-      Random rnd = new Random(Seed);
-
       // build the original value array
       byte[] originalBytes = new byte[_byteIndexProvider.ByteIndexPool.Count];
       for(int i = 0; i < _byteIndexProvider.ByteIndexPool.Count; i++)
@@ -62,7 +48,7 @@ namespace FileGlitcher.Processors
       }
 
       // shuffle the bytes
-      byte[] shuffledBytes = originalBytes.OrderBy(i => rnd.Next()).ToArray();
+      byte[] shuffledBytes = originalBytes.OrderBy(i => RandomNumberGenerator.GetRandomNumber(0, Int32.MaxValue)).ToArray();
 
       int shuffledByteIndex = 0;
       while(_byteIndexProvider.ByteIndexPool.Count != 0)
