@@ -5,7 +5,7 @@ namespace FileGlitcher
   /// <summary>
   /// A glitched file.
   /// </summary>
-  public class GlitchFile
+  public class GlitchFile : IFile
   {
     #region Properties
 

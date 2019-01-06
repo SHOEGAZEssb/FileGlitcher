@@ -49,11 +49,12 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseFile.cs" />
+    <Compile Include="Files\BaseFile.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Glitcher.cs" />
     <Compile Include="GlitcherConfiguration.cs" />
-    <Compile Include="GlitchFile.cs" />
+    <Compile Include="Files\GlitchFile.cs" />
+    <Compile Include="Files\IFile.cs" />
     <Compile Include="IRandomNumberGenerator.cs" />
     <Compile Include="Processors\BitShiftProcessor.cs" />
     <Compile Include="Processors\ByteIndexProviders\ConditionedByteIndexProvider.cs" />

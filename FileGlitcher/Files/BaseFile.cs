@@ -5,7 +5,7 @@ namespace FileGlitcher
   /// <summary>
   /// A file to glitch.
   /// </summary>
-  public class BaseFile
+  public class BaseFile : IFile
   {
     #region Properties
 
@@ -35,6 +35,7 @@ namespace FileGlitcher
     public BaseFile(string file)
     {
       Bytes = File.ReadAllBytes(file);
+      FileName = file;
     }
   }
 }

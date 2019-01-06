@@ -52,7 +52,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     {
       _range = range;
 
-      if (numBytesToGlitch == 0)
+      if (numBytesToGlitch <= 0)
         throw new ArgumentOutOfRangeException(nameof(numBytesToGlitch));
 
       _numBytesToGlitch = numBytesToGlitch;
