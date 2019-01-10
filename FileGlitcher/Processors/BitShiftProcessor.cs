@@ -41,7 +41,7 @@ namespace FileGlitcher.Processors
     /// <param name="byteIndexProvider">Provider of byte indexes.</param>
     /// <param name="byteProvider">Provider of byte values.</param>
     /// <param name="direction">Direction to shift the bits.</param>
-    public BitShiftProcessor(ByteIndexProviderBase byteIndexProvider, IByteProvider byteProvider, ShiftDirection direction) 
+    public BitShiftProcessor(ByteIndexProviderBase byteIndexProvider, IByteProvider byteProvider, ShiftDirection direction)
       : base(byteIndexProvider, byteProvider)
     {
       Direction = direction;
@@ -57,9 +57,9 @@ namespace FileGlitcher.Processors
     /// <returns>Modified bytes.</returns>
     public override byte[] Apply(byte[] bytes)
     {
-      // todo: byterule
+      _byteIndexProvider.CreatePossibleByteIndexes();
 
-      while(_byteIndexProvider.ByteIndexPool.Count != 0)
+      while (_byteIndexProvider.ByteIndexPool.Count != 0)
       {
         uint byteIndex = _byteIndexProvider.GetNextByteIndex();
         byte byteToShift = bytes[byteIndex];

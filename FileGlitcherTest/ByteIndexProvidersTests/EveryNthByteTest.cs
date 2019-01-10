@@ -22,6 +22,7 @@ namespace FileGlitcherTest.ByteIndexProvidersTest
       // given: range and byte rule with max 4 bytes
       ByteRange range = new ByteRange(0, 10);
       EveryNthByteIndexProvider rule = new EveryNthByteIndexProvider(range, 4, 2);
+      rule.CreatePossibleByteIndexes();
 
       List<uint> expectedIndexes = new List<uint>()
       {
@@ -50,6 +51,7 @@ namespace FileGlitcherTest.ByteIndexProvidersTest
       // given: range and byte rule
       ByteRange range = new ByteRange(0, 11);
       EveryNthByteIndexProvider rule = new EveryNthByteIndexProvider(range, 2);
+      rule.CreatePossibleByteIndexes();
 
       List<uint> expectedIndexes = new List<uint>()
       {

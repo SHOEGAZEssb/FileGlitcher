@@ -34,13 +34,12 @@
       : base(range, numBytesToGlitch)
     {
       RandomNumberGenerator = randomNumberGenerator;
-      CreatePossibleByteIndexes();
     }
 
     /// <summary>
     /// Creates the possible byte indexes to use.
     /// </summary>
-    protected override void CreatePossibleByteIndexes()
+    public override void CreatePossibleByteIndexes()
     {
       for(int i = 0; i < _numBytesToGlitch; i++)
       {

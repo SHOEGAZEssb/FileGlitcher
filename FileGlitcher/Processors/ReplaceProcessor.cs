@@ -25,9 +25,9 @@ namespace FileGlitcher.Processors
     /// <returns>Modified bytes.</returns>
     public override byte[] Apply(byte[] bytes)
     {
-      // todo: initialize byterule
+      _byteIndexProvider.CreatePossibleByteIndexes();
 
-      while(_byteIndexProvider.ByteIndexPool.Count != 0)
+      while (_byteIndexProvider.ByteIndexPool.Count != 0)
       {
         bytes[_byteIndexProvider.GetNextByteIndex()] = ByteProvider.GetByte();
       }

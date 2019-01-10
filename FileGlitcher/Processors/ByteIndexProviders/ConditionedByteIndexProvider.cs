@@ -38,9 +38,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
         throw new ArgumentException(string.Format("{0} can't be empty", nameof(bytes)));
 
       _possibleBytes = bytes.SubArray(_range.Start, _range.End - _range.Start);
-
       _conditionPredicate = conditionPredicate ?? throw new ArgumentNullException(nameof(conditionPredicate));
-      CreatePossibleByteIndexes();
     }
 
     /// <summary>
@@ -56,7 +54,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// <summary>
     /// Creates the possible byte indexes to use.
     /// </summary>
-    protected override void CreatePossibleByteIndexes()
+    public override void CreatePossibleByteIndexes()
     {
       uint counter = 0;
       for(uint i = _range.Start; i < _range.End - _range.Start; i++)

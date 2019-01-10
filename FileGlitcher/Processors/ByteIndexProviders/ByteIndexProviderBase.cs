@@ -64,7 +64,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// <summary>
     /// Creates the possible byte indexes to use.
     /// </summary>
-    protected abstract void CreatePossibleByteIndexes();
+    public abstract void CreatePossibleByteIndexes();
 
     /// <summary>
     /// Gets the index of the next byte to glitch.

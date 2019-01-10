@@ -19,12 +19,13 @@ namespace FileGlitcherTest.ByteIndexProvidersTests
     {
       // given: processor
       byte[] bytes = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-      ConditionedByteIndexProvider processor = new ConditionedByteIndexProvider(new ByteRange(0, (uint)bytes.Length), bytes, b => b > 5);
+      ConditionedByteIndexProvider provider = new ConditionedByteIndexProvider(new ByteRange(0, (uint)bytes.Length), bytes, b => b > 5);
+      provider.CreatePossibleByteIndexes();
 
       // when: getting the indexes
       List<uint> actual = new List<uint>();
-      while (processor.ByteIndexPool.Count != 0)
-        actual.Add(processor.GetNextByteIndex());
+      while (provider.ByteIndexPool.Count != 0)
+        actual.Add(provider.GetNextByteIndex());
 
       // then: correct indexes provided
       byte[] expected = new byte[] { 6, 7, 8, 9 };

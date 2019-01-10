@@ -32,7 +32,6 @@ namespace FileGlitcher.Processors.ByteIndexProviders
         throw new ArgumentOutOfRangeException(nameof(maxNumBytesToGlitch));
 
       _n = n;
-      CreatePossibleByteIndexes();
     }
 
     /// <summary>
@@ -47,7 +46,7 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// <summary>
     /// Creates the possible byte indexes to use.
     /// </summary>
-    protected override void CreatePossibleByteIndexes()
+    public override void CreatePossibleByteIndexes()
     {
       for (uint i = 0; i <= _range.End - _range.Start; i++)
       {

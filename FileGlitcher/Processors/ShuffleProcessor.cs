@@ -47,7 +47,7 @@ namespace FileGlitcher.Processors
     /// <returns>Modified bytes.</returns>
     public override byte[] Apply(byte[] bytes)
     {
-      // todo: initialize byteIndexProvider
+      _byteIndexProvider.CreatePossibleByteIndexes();
 
       // build the original value array
       byte[] originalBytes = new byte[_byteIndexProvider.ByteIndexPool.Count];
@@ -57,7 +57,7 @@ namespace FileGlitcher.Processors
       }
 
       // shuffle the bytes
-      byte[] shuffledBytes = originalBytes.OrderBy(i => RandomNumberGenerator.GetRandomNumber(0, Int32.MaxValue)).ToArray();
+      byte[] shuffledBytes = originalBytes.OrderBy(i => RandomNumberGenerator.GetRandomNumber(0, int.MaxValue)).ToArray();
 
       int shuffledByteIndex = 0;
       while(_byteIndexProvider.ByteIndexPool.Count != 0)
