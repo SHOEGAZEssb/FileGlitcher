@@ -22,7 +22,10 @@ namespace FileGlitcherUI
           NotifyOfPropertyChange();
 
           if (InputFileVM != null)
+          {
             GlitcherConfigurationVM = new GlitcherConfigurationViewModel(InputFileVM);
+            OutputFileName = InputFileVM.FileName.Replace(".", "_glitched.");
+          }
         }
       }
     }

@@ -3,16 +3,22 @@ using System.Windows.Media.Imaging;
 
 namespace FileGlitcherUI.Files
 {
+  /// <summary>
+  /// ViewModel for a image file.
+  /// </summary>
   class ImageFileViewModel : FileViewModelBase
   {
     #region Properties
 
+    /// <summary>
+    /// The actual image.
+    /// </summary>
     public BitmapSource Image
     {
       get => _image;
       private set
       {
-        if(Image != value)
+        if (Image != value)
         {
           _image = value;
           NotifyOfPropertyChange();
@@ -25,6 +31,10 @@ namespace FileGlitcherUI.Files
 
     #region Construction
 
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="fileName">Path to the image.</param>
     public ImageFileViewModel(string fileName)
       : base(fileName)
     {

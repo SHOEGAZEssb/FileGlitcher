@@ -57,27 +57,37 @@ namespace FileGlitcherUI
 
     #region Member
 
+    private FileViewModelBase _fileVM;
+
     #endregion Member
 
     #region Construction
 
     public GlitcherConfigurationViewModel(FileViewModelBase fileVM)
     {
+      Configuration = new GlitcherConfiguration();
       Processors = new ObservableCollection<ProcessorViewModelBase>();
+      _fileVM = fileVM;
     }
 
     #endregion Construction
 
     public void AddProcessor()
     {
-
+      WindowManager w = new WindowManager();
+      var vm = new CreateProcessorViewModel(_fileVM);
+      if (w.ShowDialog(vm) ?? false)
+      {
+        Configuration.ProcessorChain.Add(vm.ProcessorVM.Processor);
+        Processors.Add(vm.ProcessorVM);
+      }
     }
 
     public void RemoveProcessor()
     {
       if (SelectedProcessor == null)
         throw new InvalidOperationException();
-      // todo: remove from config
+      Configuration.ProcessorChain.Remove(SelectedProcessor.Processor);
       Processors.Remove(SelectedProcessor);
     }
 

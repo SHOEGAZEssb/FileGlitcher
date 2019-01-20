@@ -6,6 +6,7 @@ namespace FileGlitcherUI.Files
   class FileViewModelBase : Screen
   {
     public byte[] Bytes => _file.Bytes;
+    public string FileName => _file.FileName;
 
     #region Member
 

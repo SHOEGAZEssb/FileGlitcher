@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FileGlitcherUI"
         mc:Ignorable="d" d:DesignWidth="600" d:DesignHeight="350">
-    <Grid>
-
-    </Grid>
+  <Grid>
+    <ContentControl x:Name="GlitcherVM" Margin="5"/>
+  </Grid>
 </UserControl>
