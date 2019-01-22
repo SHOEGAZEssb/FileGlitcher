@@ -12,9 +12,9 @@ namespace FileGlitcher.Processors
     #region Properties
 
     /// <summary>
-    /// Generator for random numbers.
+    /// Seed for random number generation.
     /// </summary>
-    public IRandomNumberGenerator RandomNumberGenerator;
+    public int Seed;
 
     #endregion Properties
 
@@ -23,11 +23,11 @@ namespace FileGlitcher.Processors
     /// </summary>
     /// <param name="byteIndexProvider">Provider of the indexes of
     /// the bytes to glitch.</param>
-    /// <param name="randomNumberGenerator">Generator for random numbers.</param>
-    public ShuffleProcessor(ByteIndexProviderBase byteIndexProvider, IRandomNumberGenerator randomNumberGenerator)
+    /// <param name="seed">Seed for random number generation.</param>
+    public ShuffleProcessor(ByteIndexProviderBase byteIndexProvider, int seed)
       : base(byteIndexProvider)
     {
-      RandomNumberGenerator = randomNumberGenerator;
+      Seed = seed;
     }
 
     /// <summary>
@@ -36,7 +36,7 @@ namespace FileGlitcher.Processors
     /// <param name="byteIndexProvider">Provider of the indexes of
     /// the bytes to glitch.</param>
     public ShuffleProcessor(ByteIndexProviderBase byteIndexProvider)
-      : this(byteIndexProvider, new RandomNumberGenerator())
+      : this(byteIndexProvider, DateTime.Now.Ticks.GetHashCode())
     { }
 
     /// <summary>
@@ -57,7 +57,8 @@ namespace FileGlitcher.Processors
       }
 
       // shuffle the bytes
-      byte[] shuffledBytes = originalBytes.OrderBy(i => RandomNumberGenerator.GetRandomNumber(0, int.MaxValue)).ToArray();
+      Random rnd = new Random(Seed);
+      byte[] shuffledBytes = originalBytes.OrderBy(i => rnd.Next(0, int.MaxValue)).ToArray();
 
       int shuffledByteIndex = 0;
       while(_byteIndexProvider.ByteIndexPool.Count != 0)

@@ -55,7 +55,6 @@
     <Compile Include="GlitcherConfiguration.cs" />
     <Compile Include="Files\GlitchFile.cs" />
     <Compile Include="Files\IFile.cs" />
-    <Compile Include="IRandomNumberGenerator.cs" />
     <Compile Include="Processors\BitShiftProcessor.cs" />
     <Compile Include="Processors\ByteIndexProviders\ConditionedByteIndexProvider.cs" />
     <Compile Include="Processors\ByteProvidedProcessorBase.cs" />
@@ -84,7 +83,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RandomNumberGenerator.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
