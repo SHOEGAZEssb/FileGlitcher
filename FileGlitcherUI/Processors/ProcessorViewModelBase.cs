@@ -7,7 +7,7 @@ namespace FileGlitcherUI.Processors
   {
     #region Properties
 
-    public abstract ProcessorBase Processor { get; }
+    public abstract IProcessor Processor { get; }
 
     #endregion Properties
   }

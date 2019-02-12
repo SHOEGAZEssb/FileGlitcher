@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using FileGlitcher;
 using FileGlitcher.Processors;
 using System;
 

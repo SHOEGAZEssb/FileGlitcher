@@ -27,7 +27,15 @@ namespace FileGlitcher
       byte[] bytes = (byte[])bytesToGlitch.Clone();
       foreach(var processor in config.ProcessorChain)
       {
-        bytes = processor.Apply(bytes);
+        var indexProvider = processor.Value;
+        if (indexProvider != null)
+        {
+          byte[] partBytesToGlitch = indexProvider.GetBytesToGlitch(bytes);
+          partBytesToGlitch = processor.Key.Apply(partBytesToGlitch);
+          indexProvider.ApplyGlitchedBytes(partBytesToGlitch, bytes);
+        }
+        else
+          bytes = processor.Key.Apply(bytes);
       }
 
       return bytes;

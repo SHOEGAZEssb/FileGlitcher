@@ -21,10 +21,10 @@ namespace FileGlitcherTest
       // given: glitcher configuration with multiple processors
       byte[] bytes = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
       GlitcherConfiguration config = new GlitcherConfiguration();
-      BitShiftProcessor bitShiftProcessor = new BitShiftProcessor(new EveryNthByteIndexProvider(new ByteRange(0, 5), 1), new FixedByteProvider(1), ShiftDirection.Left);
-      MathProcessor mathProcessor = new MathProcessor(new EveryNthByteIndexProvider(new ByteRange(0, (uint)bytes.Length), 1), new FixedByteProvider(1), Operation.Add, false);
-      config.ProcessorChain.Add(bitShiftProcessor);
-      config.ProcessorChain.Add(mathProcessor);
+      BitShiftProcessor bitShiftProcessor = new BitShiftProcessor(new FixedByteProvider(1), ShiftDirection.Left);
+      MathProcessor mathProcessor = new MathProcessor(new FixedByteProvider(1), Operation.Add, false);
+      config.ProcessorChain.Add(bitShiftProcessor, new EveryNthByteIndexProvider(new ByteRange(0, 5), 1));
+      config.ProcessorChain.Add(mathProcessor, new EveryNthByteIndexProvider(new ByteRange(0, (uint)bytes.Length), 1));
 
       // when: glitching
       byte[] actual = Glitcher.GlitchBytes(bytes, config);

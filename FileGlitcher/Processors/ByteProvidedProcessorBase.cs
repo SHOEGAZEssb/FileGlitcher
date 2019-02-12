@@ -1,6 +1,5 @@
-﻿using System;
-using FileGlitcher.Processors.ByteProviders;
-using FileGlitcher.Processors.ByteIndexProviders;
+﻿using FileGlitcher.Processors.ByteProviders;
+using System;
 
 namespace FileGlitcher.Processors
 {
@@ -8,7 +7,7 @@ namespace FileGlitcher.Processors
   /// Base class for all processors whose
   /// values are provided by an <see cref="IByteProvider"/>.
   /// </summary>
-  public abstract class ByteProvidedProcessorBase : ProcessorBase
+  public abstract class ByteProvidedIProcessor : IProcessor
   {
     #region Properties
 
@@ -22,12 +21,18 @@ namespace FileGlitcher.Processors
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="byteIndexProvider">Provider of byte indexes..</param>
     /// <param name="byteProvider">Provider of bytes to use.</param>
-    public ByteProvidedProcessorBase(ByteIndexProviderBase byteIndexProvider, IByteProvider byteProvider)
-      : base(byteIndexProvider)
+    public ByteProvidedIProcessor(IByteProvider byteProvider)
     {
       ByteProvider = byteProvider ?? throw new ArgumentNullException(nameof(byteProvider));
     }
+
+    /// <summary>
+    /// Applies this processor to the
+    /// given <paramref name="bytes"/>.
+    /// </summary>
+    /// <param name="bytes">Bytes to apply the processor to.</param>
+    /// <returns>Modified bytes.</returns>
+    public abstract byte[] Apply(byte[] bytes);
   }
 }

@@ -26,11 +26,10 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    /// <param name="maxNumBytesToGlitch">Maximum number of bytes to glitch.</param>
     /// <param name="bytes">The bytes to check with the <paramref name="conditionPredicate"/>.</param>
     /// <param name="conditionPredicate">The condition to check each byte for.</param>
-    public ConditionedByteIndexProvider(ByteRange range, uint maxNumBytesToGlitch, byte[] bytes, Func<byte, bool> conditionPredicate)
-      : base(range, maxNumBytesToGlitch)
+    public ConditionedByteIndexProvider(ByteRange range, byte[] bytes, Func<byte, bool> conditionPredicate)
+      : base(range)
     {
       if (bytes == null)
         throw new ArgumentNullException(nameof(bytes));
@@ -39,29 +38,20 @@ namespace FileGlitcher.Processors.ByteIndexProviders
 
       _possibleBytes = bytes.SubArray(_range.Start, _range.End - _range.Start);
       _conditionPredicate = conditionPredicate ?? throw new ArgumentNullException(nameof(conditionPredicate));
+      CreatePossibleByteIndexes();
     }
-
-    /// <summary>
-    /// Constructor.
-    /// </summary>
-    /// <param name="range">Range to glitch.</param>
-    /// <param name="bytes">The bytes to check with the <paramref name="conditionPredicate"/>.</param>
-    /// <param name="conditionPredicate">The condition to check each byte for.</param>
-    public ConditionedByteIndexProvider(ByteRange range, byte[] bytes, Func<byte, bool> conditionPredicate)
-      : this(range, range.End - range.Start, bytes, conditionPredicate)
-    { }
 
     /// <summary>
     /// Creates the possible byte indexes to use.
     /// </summary>
-    public override void CreatePossibleByteIndexes()
+    protected override void CreatePossibleByteIndexes()
     {
       uint counter = 0;
       for(uint i = _range.Start; i < _range.End - _range.Start; i++)
       {
         if (_conditionPredicate.Invoke(_possibleBytes[counter++]))
           _possibleByteIndexes.Add(i);
-        if (_possibleByteIndexes.Count == _numBytesToGlitch)
+        if (_possibleByteIndexes.Count == _range.End - _range.Start)
           return;
       }
     }

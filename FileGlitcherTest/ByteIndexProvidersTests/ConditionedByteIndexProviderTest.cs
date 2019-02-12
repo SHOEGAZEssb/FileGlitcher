@@ -12,27 +12,6 @@ namespace FileGlitcherTest.ByteIndexProvidersTests
   class ConditionedByteIndexProviderTest
   {
     /// <summary>
-    /// Tests if the correct byte indexes are provided.
-    /// </summary>
-    [Test]
-    public void ProvideTest()
-    {
-      // given: processor
-      byte[] bytes = new byte[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-      ConditionedByteIndexProvider provider = new ConditionedByteIndexProvider(new ByteRange(0, (uint)bytes.Length), bytes, b => b > 5);
-      provider.CreatePossibleByteIndexes();
-
-      // when: getting the indexes
-      List<uint> actual = new List<uint>();
-      while (provider.ByteIndexPool.Count != 0)
-        actual.Add(provider.GetNextByteIndex());
-
-      // then: correct indexes provided
-      byte[] expected = new byte[] { 6, 7, 8, 9 };
-      CollectionAssert.AreEqual(expected, actual);
-    }
-
-    /// <summary>
     /// Tests if the correct exception is thrown
     /// when no bytes are given.
     /// </summary>

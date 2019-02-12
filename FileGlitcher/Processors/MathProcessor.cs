@@ -1,5 +1,4 @@
 ﻿using FileGlitcher.Processors.ByteProviders;
-using FileGlitcher.Processors.ByteIndexProviders;
 
 namespace FileGlitcher.Processors
 {
@@ -23,7 +22,7 @@ namespace FileGlitcher.Processors
   /// Processor that performs mathematical
   /// operations on the bytes to glitch.
   /// </summary>
-  public class MathProcessor : ByteProvidedProcessorBase
+  public class MathProcessor : ByteProvidedIProcessor
   {
     #region Properties
 
@@ -42,12 +41,11 @@ namespace FileGlitcher.Processors
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="byteRule">Byte rule to apply.</param>
     /// <param name="byteProvider">Provider of bytes.</param>
     /// <param name="operation">Mathematical operation to perform.</param>
     /// <param name="wrapAround">If true, wraps the calculated byte if needed.</param>
-    public MathProcessor(ByteIndexProviderBase byteRule, IByteProvider byteProvider, Operation operation, bool wrapAround)
-      : base(byteRule, byteProvider)
+    public MathProcessor(IByteProvider byteProvider, Operation operation, bool wrapAround)
+      : base(byteProvider)
     {
       OperationToPerform = operation;
       WrapAround = wrapAround;
@@ -61,26 +59,25 @@ namespace FileGlitcher.Processors
     /// <returns>Modified bytes.</returns>
     public override byte[] Apply(byte[] bytes)
     {
-      _byteIndexProvider.CreatePossibleByteIndexes();
+      byte[] glitchedBytes = new byte[bytes.Length];
 
-      while (_byteIndexProvider.ByteIndexPool.Count != 0)
+      for (int i = 0; i < glitchedBytes.Length; i++)
       {
-        uint byteIndex = _byteIndexProvider.GetNextByteIndex();
-        byte original = bytes[byteIndex];
+        byte original = bytes[i];
         byte value = ByteProvider.GetByte();
 
-        switch(OperationToPerform)
+        switch (OperationToPerform)
         {
           case Operation.Add:
-            bytes[byteIndex] = AddByte(original, value);
+            glitchedBytes[i] = AddByte(original, value);
             break;
           case Operation.Subtract:
-            bytes[byteIndex] = SubtractByte(original, value);
+            glitchedBytes[i] = SubtractByte(original, value);
             break;
         }
       }
 
-      return bytes;
+      return glitchedBytes;
     }
 
     /// <summary>

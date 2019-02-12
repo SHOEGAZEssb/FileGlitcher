@@ -1,4 +1,5 @@
 ﻿using FileGlitcher.Processors;
+using FileGlitcher.Processors.ByteIndexProviders;
 using System.Collections.Generic;
 
 namespace FileGlitcher
@@ -14,7 +15,7 @@ namespace FileGlitcher
     /// The processor chain used to
     /// glitch the bytes.
     /// </summary>
-    public List<ProcessorBase> ProcessorChain { get; private set; }
+    public IDictionary<IProcessor, ByteIndexProviderBase> ProcessorChain { get; private set; }
 
     #endregion Properties
 
@@ -23,7 +24,7 @@ namespace FileGlitcher
     /// </summary>
     public GlitcherConfiguration()
     {
-      ProcessorChain = new List<ProcessorBase>();
+      ProcessorChain = new Dictionary<IProcessor, ByteIndexProviderBase>();
     }
   }
 }

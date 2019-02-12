@@ -8,51 +8,51 @@ namespace FileGlitcher.Processors.ByteIndexProviders
   /// </summary>
   public class EveryNthByteIndexProvider : ByteIndexProviderBase
   {
-    #region Member
+    #region Properties
 
     /// <summary>
     /// Every 'nth' byte should be glitched.
     /// </summary>
-    private uint _n;
-
-    #endregion Member
-
-    /// <summary>
-    /// Constructor.
-    /// </summary>
-    /// <param name="range">Range to glitch.</param>
-    /// <param name="maxNumBytesToGlitch">Maximum number of bytes to glitch.</param>
-    /// <param name="n"/>Byte skip factor.
-    public EveryNthByteIndexProvider(ByteRange range, uint maxNumBytesToGlitch, uint n)
-      : base(range, maxNumBytesToGlitch)
+    public int N
     {
-      if (n == 0 || n > range.End - range.Start)
-        throw new ArgumentOutOfRangeException(nameof(n));
-      if (maxNumBytesToGlitch == 0)
-        throw new ArgumentOutOfRangeException(nameof(maxNumBytesToGlitch));
+      get => _n;
+      set
+      {
+        if (value == 0 || value > _range.End - _range.Start)
+          throw new ArgumentOutOfRangeException(nameof(N));
 
-      _n = n;
+        if (N != value)
+        {
+          _n = value;
+          CreatePossibleByteIndexes();
+        }
+      }
     }
+    private int _n;
+
+    #endregion EndRegion
 
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    /// <param name="n">Byte skip factor.</param>
-    public EveryNthByteIndexProvider(ByteRange range, uint n)
-      : this(range, range.End - range.Start, n)
-    { }
+    /// <param name="n"/>Byte skip factor.
+    public EveryNthByteIndexProvider(ByteRange range, int n)
+      : base(range)
+    {
+      N = n;
+    }
 
     /// <summary>
     /// Creates the possible byte indexes to use.
     /// </summary>
-    public override void CreatePossibleByteIndexes()
+    protected override void CreatePossibleByteIndexes()
     {
       for (uint i = 0; i <= _range.End - _range.Start; i++)
       {
         if ((i + 1) % _n == 0)
           _possibleByteIndexes.Add(_range.Start + i);
-        if (_possibleByteIndexes.Count == _numBytesToGlitch)
+        if (_possibleByteIndexes.Count == _range.End - _range.Start)
           return;
       }
     }

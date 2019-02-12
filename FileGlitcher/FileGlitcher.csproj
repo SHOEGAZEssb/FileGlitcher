@@ -67,7 +67,7 @@
     <Compile Include="Processors\ByteIndexProviders\EveryNthByteIndexProvider.cs" />
     <Compile Include="Processors\ByteIndexProviders\RandomByteIndexProvider.cs" />
     <Compile Include="Processors\MathProcessor.cs" />
-    <Compile Include="Processors\ProcessorBase.cs" />
+    <Compile Include="Processors\IProcessor.cs" />
     <Compile Include="Processors\ReplaceProcessor.cs" />
     <Compile Include="Processors\ShuffleProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

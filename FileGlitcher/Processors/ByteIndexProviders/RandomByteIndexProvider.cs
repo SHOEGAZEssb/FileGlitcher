@@ -22,37 +22,28 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// </summary>
     /// <param name="range">Range to glitch.</param>
     public RandomByteIndexProvider(ByteRange range)
-      : this(range, range.End - range.Start)
+      : this(range, DateTime.Now.Ticks.GetHashCode())
     { }
 
     /// <summary>
     /// Constructor.
     /// </summary>
     /// <param name="range">Range to glitch.</param>
-    /// <param name="numBytesToGlitch">Amount of bytes to glitch in the range.</param>
-    public RandomByteIndexProvider(ByteRange range, uint numBytesToGlitch)
-      : this(range, numBytesToGlitch, DateTime.Now.Ticks.GetHashCode())
-    { }
-
-    /// <summary>
-    /// Constructor.
-    /// </summary>
-    /// <param name="range">Range to glitch.</param>
-    /// <param name="numBytesToGlitch">Amount of bytes to glitch in the range.</param>
     /// <param name="seed">Seed for random number generation.</param>
-    public RandomByteIndexProvider(ByteRange range, uint numBytesToGlitch, int seed)
-      : base(range, numBytesToGlitch)
+    public RandomByteIndexProvider(ByteRange range, int seed)
+      : base(range)
     {
       Seed = seed;
+      CreatePossibleByteIndexes();
     }
 
     /// <summary>
     /// Creates the possible byte indexes to use.
     /// </summary>
-    public override void CreatePossibleByteIndexes()
+    protected override void CreatePossibleByteIndexes()
     {
       Random rnd = new Random(Seed);
-      for(int i = 0; i < _numBytesToGlitch; i++)
+      for(int i = 0; i < _range.End - _range.Start; i++)
       {
         _possibleByteIndexes.Add((uint)rnd.Next((int)_range.Start, (int)_range.End));
       }

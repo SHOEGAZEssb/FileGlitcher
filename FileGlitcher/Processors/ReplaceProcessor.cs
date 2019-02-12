@@ -1,20 +1,18 @@
 ﻿using FileGlitcher.Processors.ByteProviders;
-using FileGlitcher.Processors.ByteIndexProviders;
 
 namespace FileGlitcher.Processors
 {
   /// <summary>
   /// Processor that replaces bytes.
   /// </summary>
-  public class ReplaceProcessor : ByteProvidedProcessorBase
+  public class ReplaceProcessor : ByteProvidedIProcessor
   {
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="byteRule">Byte rule to apply.</param>
     /// <param name="byteProvider">Provider of bytes.</param>
-    public ReplaceProcessor(ByteIndexProviderBase byteRule, IByteProvider byteProvider)
-      : base(byteRule, byteProvider)
+    public ReplaceProcessor(IByteProvider byteProvider)
+      : base(byteProvider)
     { }
 
     /// <summary>
@@ -25,14 +23,12 @@ namespace FileGlitcher.Processors
     /// <returns>Modified bytes.</returns>
     public override byte[] Apply(byte[] bytes)
     {
-      _byteIndexProvider.CreatePossibleByteIndexes();
+      byte[] glitchedBytes = new byte[bytes.Length];
 
-      while (_byteIndexProvider.ByteIndexPool.Count != 0)
-      {
-        bytes[_byteIndexProvider.GetNextByteIndex()] = ByteProvider.GetByte();
-      }
+      for(int i = 0; i < glitchedBytes.Length; i++)
+        glitchedBytes[i] = ByteProvider.GetByte();
 
-      return bytes;
+      return glitchedBytes;
     }
   }
 }

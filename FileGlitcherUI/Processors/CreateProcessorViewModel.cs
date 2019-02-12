@@ -1,11 +1,6 @@
 ﻿using Caliburn.Micro;
 using FileGlitcherUI.Files;
 using FileGlitcherUI.Processors.ByteIndexProvider;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileGlitcherUI.Processors
 {

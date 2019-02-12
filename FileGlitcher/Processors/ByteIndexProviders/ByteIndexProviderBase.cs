@@ -15,8 +15,6 @@ namespace FileGlitcher.Processors.ByteIndexProviders
 
     /// <summary>
     /// The pool of byte indexes.
-    /// Each <see cref="GetNextByteIndex"/> removes
-    /// the index from the pool.
     /// </summary>
     public IReadOnlyList<uint> ByteIndexPool => _possibleByteIndexes.AsReadOnly();
 
@@ -28,11 +26,6 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// The byte range to get possible indexes from.
     /// </summary>
     protected ByteRange _range;
-
-    /// <summary>
-    /// Amount of bytes to glitch.
-    /// </summary>
-    protected uint _numBytesToGlitch;
 
     /// <summary>
     /// List of possible byte indexes;
@@ -47,34 +40,47 @@ namespace FileGlitcher.Processors.ByteIndexProviders
     /// Constructor.
     /// </summary>
     /// <param name="range">The byte range to get possible indexes from.</param>
-    /// <param name="numBytesToGlitch">Amount of bytes to glitch.</param>
-    public ByteIndexProviderBase(ByteRange range, uint numBytesToGlitch)
+    public ByteIndexProviderBase(ByteRange range)
     {
       _range = range;
-
-      if (numBytesToGlitch <= 0)
-        throw new ArgumentOutOfRangeException(nameof(numBytesToGlitch));
-
-      _numBytesToGlitch = numBytesToGlitch;
       _possibleByteIndexes = new List<uint>();
     }
 
     #endregion Construction
 
     /// <summary>
-    /// Creates the possible byte indexes to use.
+    /// Gets the bytes to glitch from the given <paramref name="bytes"/>
+    /// based on the provided indexes.
     /// </summary>
-    public abstract void CreatePossibleByteIndexes();
+    /// <param name="bytes">Bytes to get subarray from.</param>
+    /// <returns>Subarray with actual bytes to glitch.</returns>
+    public byte[] GetBytesToGlitch(byte[] bytes)
+    {
+      byte[] bytesToGlitch = new byte[_possibleByteIndexes.Count];
+      for(int i = 0; i < bytesToGlitch.Length; i++)
+      {
+        bytesToGlitch[i] = bytes[i];
+      }
+
+      return bytesToGlitch;
+    }
 
     /// <summary>
-    /// Gets the index of the next byte to glitch.
+    /// Applies the <paramref name="partBytesToGlitch"/> to the <paramref name="bytes"/>.
     /// </summary>
-    /// <returns>Index of the next byte to glitch.</returns>
-    public uint GetNextByteIndex()
+    /// <param name="partBytesToGlitch">The glitched bytes.</param>
+    /// <param name="bytes">The original bytes to apply the <paramref name="partBytesToGlitch"/> to.</param>
+    public void ApplyGlitchedBytes(byte[] partBytesToGlitch, byte[] bytes)
     {
-      uint index = _possibleByteIndexes.First();
-      _possibleByteIndexes.RemoveAt(0);
-      return index;
+      for(int i = 0; i < partBytesToGlitch.Length; i++)
+      {
+        bytes[_possibleByteIndexes[i]] = partBytesToGlitch[i];
+      }
     }
+
+    /// <summary>
+    /// Creates the possible byte indexes to use.
+    /// </summary>
+    protected abstract void CreatePossibleByteIndexes();
   }
 }

@@ -19,7 +19,7 @@ namespace FileGlitcherTest.ProcessorTests
     {
       // given: BitShiftProcessor
       byte[] bytes = new byte[] { 0, 1, 2, 3, 4 };
-      BitShiftProcessor proc = new BitShiftProcessor(new EveryNthByteIndexProvider(new ByteRange(0, (uint)bytes.Length), 1), new FixedByteProvider(1), ShiftDirection.Right);
+      BitShiftProcessor proc = new BitShiftProcessor(new FixedByteProvider(1), ShiftDirection.Right);
 
       // when: executing the processor
       var actual = proc.Apply(bytes);
@@ -37,7 +37,7 @@ namespace FileGlitcherTest.ProcessorTests
     {
       // given: BitShiftProcessor
       byte[] bytes = new byte[] { 0, 1, 2, 3, 4 };
-      BitShiftProcessor proc = new BitShiftProcessor(new EveryNthByteIndexProvider(new ByteRange(0, (uint)bytes.Length), 1), new FixedByteProvider(1), ShiftDirection.Left);
+      BitShiftProcessor proc = new BitShiftProcessor(new FixedByteProvider(1), ShiftDirection.Left);
 
       // when: executing the processor
       var actual = proc.Apply(bytes);

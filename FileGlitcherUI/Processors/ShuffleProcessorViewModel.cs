@@ -6,7 +6,7 @@ namespace FileGlitcherUI.Processors
   {
     #region Properties
 
-    public override ProcessorBase Processor => _processor;
+    public override IProcessor Processor => _processor;
     private ShuffleProcessor _processor;
 
     #endregion Properties

@@ -1,5 +1,4 @@
-﻿using FileGlitcher.Processors.ByteIndexProviders;
-using FileGlitcher.Processors.ByteProviders;
+﻿using FileGlitcher.Processors.ByteProviders;
 
 namespace FileGlitcher.Processors
 {
@@ -22,7 +21,7 @@ namespace FileGlitcher.Processors
   /// <summary>
   /// Processor that shifts bits.
   /// </summary>
-  public class BitShiftProcessor : ByteProvidedProcessorBase
+  public class BitShiftProcessor : ByteProvidedIProcessor
   {
     #region Properties
 
@@ -38,11 +37,10 @@ namespace FileGlitcher.Processors
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="byteIndexProvider">Provider of byte indexes.</param>
     /// <param name="byteProvider">Provider of byte values.</param>
     /// <param name="direction">Direction to shift the bits.</param>
-    public BitShiftProcessor(ByteIndexProviderBase byteIndexProvider, IByteProvider byteProvider, ShiftDirection direction)
-      : base(byteIndexProvider, byteProvider)
+    public BitShiftProcessor(IByteProvider byteProvider, ShiftDirection direction)
+      : base(byteProvider)
     {
       Direction = direction;
     }
@@ -53,23 +51,21 @@ namespace FileGlitcher.Processors
     /// Applies this processor to the
     /// given <paramref name="bytes"/>.
     /// </summary>
-    /// <param name="bytes">Bytes to apply the processor to.</param>
     /// <returns>Modified bytes.</returns>
     public override byte[] Apply(byte[] bytes)
     {
-      _byteIndexProvider.CreatePossibleByteIndexes();
+      byte[] glitchedBytes = new byte[bytes.Length];
 
-      while (_byteIndexProvider.ByteIndexPool.Count != 0)
+      for(int i = 0; i < glitchedBytes.Length; i++)
       {
-        uint byteIndex = _byteIndexProvider.GetNextByteIndex();
-        byte byteToShift = bytes[byteIndex];
+        byte byteToShift = bytes[i];
         if (Direction == ShiftDirection.Left)
-          bytes[byteIndex] = (byte)(byteToShift << ByteProvider.GetByte());
+          glitchedBytes[i] = (byte)(byteToShift << ByteProvider.GetByte());
         else
-          bytes[byteIndex] = (byte)(byteToShift >> ByteProvider.GetByte());
+          glitchedBytes[i] = (byte)(byteToShift >> ByteProvider.GetByte());
       }
 
-      return bytes;
+      return glitchedBytes;
     }
   }
 }

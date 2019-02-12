@@ -78,7 +78,7 @@ namespace FileGlitcherUI
       var vm = new CreateProcessorViewModel(_fileVM);
       if (w.ShowDialog(vm) ?? false)
       {
-        Configuration.ProcessorChain.Add(vm.ProcessorVM.Processor);
+        //Configuration.ProcessorChain.Add(vm.ProcessorVM.Processor);
         Processors.Add(vm.ProcessorVM);
       }
     }
